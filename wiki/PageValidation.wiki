@@ -1,0 +1,7 @@
+#summary One-sentence summary of this page.
+#labels Featured,Phase-Requirements,Phase-Support
+
+goal:make page validation easier and clearer
+最终目标：让页面校验从此不再头疼不再繁琐
+
+目前只实现了jsp页面的校验接口
