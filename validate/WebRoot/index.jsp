@@ -1,5 +1,6 @@
 
-<%@page import="validate.Validate;"%>
+<%@page import="validate.Validate"%>
+<%@page import="validate.htmField.*"%>
 <HTML>
 <HEAD>
 <%@ page language="java" contentType="text/html; charset=GB18030" pageEncoding="GB18030"%>
@@ -26,9 +27,9 @@ Validate val = new Validate();
 //String[] moneys = {"money","money1"};
 //String[] titles = {"金额","金额1"};
 //Val.addMoneyField(moneys,titles,18,19,false,15,2,"100.09","0.25","null");
-val.addFloatField("money","金额",18,19,false,15,2,"100.09","0.25","null");
-val.addFloatField("money1","金额1",8,9,true,5,2,"10.09","0.25","null");
-val.addGeneralField("email","email",100,40,true,"/^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$/","null");
+val.addHtmField(new FloatField("money","金额",18,19,false,15,2,"100.09","0.25","null"));
+val.addHtmField(new FloatField("money1","金额1",8,9,true,5,2,"10.09","0.25","null"));
+val.addHtmField(new GeneralField("email","email",100,40,true,"/^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$/","null"));
 val.writeJs(out,"subForm");
  %>
 </HTML>
