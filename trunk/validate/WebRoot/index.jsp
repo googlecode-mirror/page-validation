@@ -1,6 +1,8 @@
 
-<%@page import="validate.Validate"%>
-<%@page import="validate.htmField.*"%>
+
+<%@page import="com.google.code.p.pageValidation.validate.Validate"%>
+
+<%@page import="com.google.code.p.pageValidation.validate.htmField.*"%>
 <HTML>
 <HEAD>
 <%@ page language="java" contentType="text/html; charset=GB18030" pageEncoding="GB18030"%>

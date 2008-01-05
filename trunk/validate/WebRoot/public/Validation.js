@@ -1,5 +1,5 @@
 ﻿var VALIDATION = new VALIDATION_class();
-function VALIDATION_class(){
+function VALIDATION_class(formID){
 /************************************************VALIDATION公用部分************************************/
      /**
      *将text field得光标设置到最后
@@ -29,7 +29,7 @@ function VALIDATION_class(){
 		form.onsubmit = function(){
 			if(VALIDATION.subCheck()){
 			//做<form ...中的onsubmit校验
-				if(oldsub != null && oldsub instanceof Function){
+				if(oldsub !== null && oldsub instanceof Function){
 					return oldsub();
 				}else return true;
 			}else return false;		
@@ -153,7 +153,7 @@ function VALIDATION_class(){
          var validate = function(htmField){
          	htmField.value = COMMVAL.strTrim(htmField.value);	
          	if(!COMMVAL.valFloat(htmField.value,intNum,decNum,maxValStr,minValStr)){
-                 alert("\""+htmTitle+"\""+"因输入整数部分"+intNum+"位以内小数部分"+decNum+"位以内的浮点数小数，请重新输入！");
+                 alert("\""+htmTitle+"\""+"应输入整数部分"+intNum+"位以内小数部分"+decNum+"位以内的浮点数小数，请重新输入！");
                  return false;
             };
             //最大值
@@ -202,5 +202,5 @@ function VALIDATION_class(){
 		 VALIDATION.addHtmField(htmFieldID, htmTitle, htmMaxLen, htmFieldSize, canEmpty,validate,"addGeneralField");
      }
 /************************************************VALIDATIONGeneral校验部分结束************************************/
-
+if(formID != undefined)this.setSubCheckForm(formID);
 }
