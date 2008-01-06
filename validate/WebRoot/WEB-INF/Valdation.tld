@@ -13,6 +13,15 @@
 			com.google.code.p.pageValidation.basicTag.FormTag
 		</tagclass>
 		<bodycontent>JSP</bodycontent>
+		<info><![CDATA[
+			this tag impliment html's <form action="..." ...></form> <br/>
+			if the id attribute setted the input's is use it, else a auto id like "FORM_....." is used. <br/>
+			the html form's method attribute is changed defaulte-value to post<br/>
+			<br/>
+			the flow attributes must be setted<br/>
+			action: the html form's action
+			]]>
+			</info>
 		<attribute>
 			<name>id</name>
 			<required>false</required>
@@ -144,7 +153,20 @@
 		<name>FloatText</name>
 		<tagclass>com.google.code.p.pageValidation.tag.FloatTextTag</tagclass>
 		<bodycontent>tagdependent</bodycontent>
-		<info>It's a auto valdation html input text filed</info>
+		<info><![CDATA[
+			auto validate float text, impliment <input type = "text" .../> <br/>
+			if the id attribute setted the input's is use it, else a auto id like "TEXT_....." is used. <br/>
+			this tag's parent must be Form tag<br/>
+			<br/>
+			the flow attributes must be setted<br/>
+			intNum: the max integer number of input float value (55.333's intNum = 2  ),<br/>
+			decNum: the max digital number of input float value (55.333's intNum = 3  ),<br/>
+			maxValue: a max value of the input float value<br/>
+			minValue: a min value of the input float value<br/>
+			name: the html input's name<br/>
+			title: the html input's title when a invalide float was inputed the hint name is title;
+			]]>
+		</info>
 		<attribute><!-- must have  the name for sumbit -->
 			<name>intNum</name>
 			<required>true</required>
