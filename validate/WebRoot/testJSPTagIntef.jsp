@@ -15,11 +15,9 @@
 	<BODY>
 		<val:Form action="index.jsp">
 			<% 
-			String test = "345";
+			String test = "345";test.charAt(2);
 		%>
-			
-			${test }
-			½ð¶î${System.out }
+			½ð¶î
 			<val:FloatText id="money1" decNum="2" intNum="3" maxValue="1000" minValue="<%=test %>" name="testFloat"
 				title="½ð¶î" maxlength="19" size="20" />
 				 val:FloatText id="money1" decNum="2" intNum="3" maxValue="1000" minValue="<%=test %>" name="testFloat"
