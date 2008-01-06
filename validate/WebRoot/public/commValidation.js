@@ -4,7 +4,7 @@
 */
 function alertAndThrow(str){
 	window.alert(str);
-	throw str;
+	throw str; 
 }
 
 /**
