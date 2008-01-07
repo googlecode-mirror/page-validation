@@ -49,18 +49,20 @@ public class Validate {
 	public void writeJs(JspWriter out, String formId) throws IOException,
 			ValidateException {
 		setSubCheckFormId(formId);
+		String jsValidateVarName = "val_"+formId;
 		if (htmFieldList.size() > 0) {
 			out.println("<script language = \"javascript\" >");
 			Iterator iter = this.htmFieldList.iterator();
+			out.println("var "+jsValidateVarName+" = new VALIDATION(\""+formId+"\");");
 			while (iter.hasNext()) {
 				ValHtmField valHtmField = (ValHtmField) iter.next();
-				valHtmField.writeJs(out);
+				out.println(valHtmField.getValdationJsString(jsValidateVarName));
 			}
 			if (getSubCheckFormId() == null) {
 				throw new ValidateException(
 						"you must call Validate.setSubCheckFormId first before call Validate.writeJs");
 			}
-			out.println("VALIDATION.setSubCheckForm(\"" + getSubCheckFormId()
+			out.println(jsValidateVarName+".setSubCheckForm(\"" + getSubCheckFormId()
 					+ "\");");
 			out.println("</script>");
 		}

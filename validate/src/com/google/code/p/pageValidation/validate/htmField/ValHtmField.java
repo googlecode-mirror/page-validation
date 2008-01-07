@@ -1,17 +1,15 @@
 /**
- * 定义html场校验接口
+ * 定义html场校验接�?
  */
 package com.google.code.p.pageValidation.validate.htmField;
 
 import java.io.IOException;
 
-import javax.servlet.jsp.JspWriter;
-
 import com.google.code.p.pageValidation.validate.ValidateException;
 
 
 /**
- * @author niebo 定义html场校验接口
+ * @author niebo 定义html场校验接�?
  */
 public abstract class ValHtmField {
 	private String htmFieldID;
@@ -22,12 +20,12 @@ public abstract class ValHtmField {
 	private String custCheckFun;
 
 	/**
-	 * @param htmFieldID html input场的ID属性
-	 * @param htmTitle  提示信息的标题
-	 * @param htmMaxLen 该场的maxlength属性
-	 * @param htmFieldSize 该场得size属性
-	 * @param canEmpty  该场是否允许提交空值 true表示可以提交空值 
-	 * @param custCheckFun 需要调用的特殊js校验方法名 在基本校验结束时调用 可以输入“null”表示无特殊教研
+	 * @param htmFieldID html input场的ID属�?
+	 * @param htmTitle  提示信息的标�?
+	 * @param htmMaxLen 该场的maxlength属�?
+	 * @param htmFieldSize 该场得size属�?
+	 * @param canEmpty  该场是否允许提交空�?true表示可以提交空�?
+	 * @param custCheckFun 需要调用的特殊js校验方法�?在基本校验结束时调用 可以输入“null”表示无特殊教研
 	 */
 	public ValHtmField(String htmFieldID, String htmTitle, int htmMaxLen, int htmFieldSize, boolean canEmpty,
 			 String custCheckFun) {
@@ -44,8 +42,7 @@ public abstract class ValHtmField {
 	 * @throws IOException
 	 * @throws ValidateException
 	 */
-	abstract public void writeJs(JspWriter out) throws IOException,
-			ValidateException;
+	abstract public String getValdationJsString(String jsValidateVarName) throws ValidateException;
 
 	/**
 	 * @return the htmFieldID
