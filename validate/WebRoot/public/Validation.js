@@ -6,7 +6,7 @@ function VALIDATION(htmFormID){
      if(htmFormID !== undefined && htmFormID !== null){
       this.setSubCheckForm(htmFormID);
      }
-};
+}
  /**
  *将text field得光标设置到最后
  *@t textField 必须输入
@@ -34,14 +34,18 @@ VALIDATION.prototype.setSubCheckForm = function(formID){
 	form.onsubmit = function(){
 		if(this_val.subCheck()){
 		//做<form ...中的onsubmit校验
-			if(oldsub != null && oldsub instanceof Function){
+			if(oldsub !== null && oldsub instanceof Function){
 				var pageres = oldsub();
 				if(pageres !== true && pageres !== false){
 					alertAndThrow("VALIDATION requare onsubmit mathod return true or false at function: \n"+oldsub.toString());
 				}				
 				return pageres;
-			}else return true;
-		}else return false;		
+			}else{
+			 	return true;
+			}
+		}else {
+			return false;
+		}	
 	}				
 }
 
@@ -53,7 +57,7 @@ VALIDATION.prototype.subCheck = function(){
 	for(index in this.SUB_CHECK_FIELD_ARR){
 		index = this.SUB_CHECK_FIELD_ARR[index];
 		var item = document.getElementById(index);
-		if(item.subCheck == undefined || item.subCheck == null){
+		if(item.subCheck === undefined || item.subCheck === null){
 		    alertAndThrow("公共函数VALIDATION.subCheck处 出错！请联系公共函数管理员！"+item.subCheck);
 				return false;
 		}
