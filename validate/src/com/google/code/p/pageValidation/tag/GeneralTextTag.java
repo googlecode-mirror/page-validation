@@ -10,7 +10,8 @@ import com.google.code.p.pageValidation.basicTag.TextTag;
  *
  */
 public class GeneralTextTag extends TextTag {
-	private String regExp,custJsCheckFun,minLength;
+	private String regExp,custJsCheckFun;
+	private Integer minLength;
 	/* (non-Javadoc)
 	 * @see com.google.code.p.pageValidation.ValidateHtmFieldTag#getValdationJsString(java.lang.String)
 	 */
@@ -55,13 +56,13 @@ public class GeneralTextTag extends TextTag {
 	/**
 	 * @return the minLength
 	 */
-	public final String getMinLength() {
+	public final Integer getMinLength() {
 		return minLength;
 	}
 	/**
 	 * @param minLength the minLength to set
 	 */
-	public final void setMinLength(String minLength) {
+	public final void setMinLength(Integer minLength) {
 		this.minLength = minLength;
 	}
 }

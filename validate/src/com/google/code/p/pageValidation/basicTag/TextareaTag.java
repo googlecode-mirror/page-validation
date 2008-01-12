@@ -18,8 +18,8 @@ import com.google.code.p.pageValidation.beans.TagBean;
  * 
  */
 public abstract class TextareaTag implements ValidateHtmFieldTag {
-	private String rows = null;
-	private String cols = null;
+	private Integer rows = null;
+	private Integer cols = null;
 	private String title = null;
 	private String name = null;
 	private String id = null;
@@ -172,7 +172,7 @@ public abstract class TextareaTag implements ValidateHtmFieldTag {
 	/**
 	 * @return the rows
 	 */
-	public final String getRows() {
+	public final Integer getRows() {
 		return rows;
 	}
 
@@ -180,14 +180,14 @@ public abstract class TextareaTag implements ValidateHtmFieldTag {
 	 * @param rows
 	 *            the rows to set
 	 */
-	public final void setRows(String rows) {
+	public final void setRows(Integer rows) {
 		this.rows = rows;
 	}
 
 	/**
 	 * @return the cols
 	 */
-	public final String getCols() {
+	public final Integer getCols() {
 		return cols;
 	}
 
@@ -195,7 +195,7 @@ public abstract class TextareaTag implements ValidateHtmFieldTag {
 	 * @param cols
 	 *            the cols to set
 	 */
-	public final void setCols(String cols) {
+	public final void setCols(Integer cols) {
 		this.cols = cols;
 	}
 

@@ -8,7 +8,7 @@ import com.google.code.p.pageValidation.tag.GeneralTextTag;
  */
 public class NameTag extends GeneralTextTag {
 	public NameTag(){
-		this.setMaxlength("30");
+		this.setMaxlength(new Integer(30));
 		this.setRegExp("new RegExp(\"^[^'\\\"()@$%^*<>&?]+$\")");
 	}
 }

@@ -24,14 +24,15 @@ abstract class InputTag implements ValidateHtmFieldTag {
 	private FormTag parent;
 
 	// html input attributes
-	private String name = null, title = null, value = null, width = null, height = null, maxlength = null,
-					htmclass = null, readonly = null, disabled = null, align = null, accept = null, accesskey = null,
-					alt = null, border = null, dir = null, id = null, ismap = null, istyle = null, lang = null,
-					checked = null, onblur = null, onchange = null, onclick = null, ondblclick = null, onfocus = null,
-					onhelp = null, onkeydown = null, onkeypress = null, onkeyup = null, onmousedown = null,
-					onmousemove = null, onmouseout = null, onmouseover = null, onmouseup = null, onselect = null,
-					size = null, src = null, style = null, tabindex = null, usemap = null, type = null;
-	private boolean canEmpty = true;
+	private String name = null, title = null, value = null, width = null, height = null, htmclass = null,
+					readonly = null, disabled = null, align = null, accept = null, accesskey = null, alt = null,
+					border = null, dir = null, id = null, ismap = null, istyle = null, lang = null, checked = null,
+					onblur = null, onchange = null, onclick = null, ondblclick = null, onfocus = null, onhelp = null,
+					onkeydown = null, onkeypress = null, onkeyup = null, onmousedown = null, onmousemove = null,
+					onmouseout = null, onmouseover = null, onmouseup = null, onselect = null, src = null, style = null,
+					tabindex = null, usemap = null, type = null;
+	private Integer maxlength = null, size = null;
+	private boolean canEmpty = false;// defalt do not allow empty
 
 	/**
 	 * @return the canEmpty
@@ -58,9 +59,9 @@ abstract class InputTag implements ValidateHtmFieldTag {
 	 * @see javax.servlet.jsp.tagext.Tag#doStartTag()
 	 */
 	public final int doStartTag() throws JspException {
-			FormTag formTag = (FormTag) getParent();
-			if (formTag == null)
-				throw new JspException("the tag " + getName() + "'s parent must be Form Tag! \n");
+		FormTag formTag = (FormTag) getParent();
+		if (formTag == null)
+			throw new JspException("the tag " + getName() + "'s parent must be Form Tag! \n");
 		/*
 		 * notice when user haven't set a id must set a unique id for a tag and
 		 * must set it in doStartTag, two or more tag may use the same tag
@@ -267,7 +268,7 @@ abstract class InputTag implements ValidateHtmFieldTag {
 	/**
 	 * @return the maxlength
 	 */
-	public final String getMaxlength() {
+	public final Integer getMaxlength() {
 		return maxlength;
 	}
 
@@ -275,7 +276,7 @@ abstract class InputTag implements ValidateHtmFieldTag {
 	 * @param maxlength
 	 *            the maxlength to set
 	 */
-	public final void setMaxlength(String maxlength) {
+	public final void setMaxlength(Integer maxlength) {
 		this.maxlength = maxlength;
 	}
 
@@ -717,7 +718,7 @@ abstract class InputTag implements ValidateHtmFieldTag {
 	/**
 	 * @return the size
 	 */
-	public final String getSize() {
+	public final Integer getSize() {
 		return size;
 	}
 
@@ -725,7 +726,7 @@ abstract class InputTag implements ValidateHtmFieldTag {
 	 * @param size
 	 *            the size to set
 	 */
-	public final void setSize(String size) {
+	public final void setSize(Integer size) {
 		this.size = size;
 	}
 

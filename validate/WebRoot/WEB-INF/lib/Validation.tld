@@ -9,7 +9,9 @@
 	<info>page Valdation tag library</info>
 	<tag>
 		<name>Form</name>
-		<tagclass>com.google.code.p.pageValidation.basicTag.FormTag</tagclass>
+		<tagclass>
+			com.google.code.p.pageValidation.basicTag.FormTag
+		</tagclass>
 		<bodycontent>JSP</bodycontent>
 		<info><![CDATA[
 			this tag impliment html's <form action="..." ...></form> <br/>
@@ -149,7 +151,9 @@
 	</tag>
 	<tag>
 		<name>FloatText</name>
-		<tagclass>com.google.code.p.pageValidation.tag.FloatTextTag</tagclass>
+		<tagclass>
+			com.google.code.p.pageValidation.tag.FloatTextTag
+		</tagclass>
 		<bodycontent>empty</bodycontent>
 		<info><![CDATA[
 			auto validate float text, impliment <input type = "text" .../> <br/>
@@ -389,7 +393,9 @@
 	</tag>
 	<tag>
 		<name>Html</name>
-		<tagclass>com.google.code.p.pageValidation.basicTag.HtmlTag</tagclass>
+		<tagclass>
+			com.google.code.p.pageValidation.basicTag.HtmlTag
+		</tagclass>
 		<bodycontent>JSP</bodycontent>
 		<info><![CDATA[
 			this tag impliment html's <html ...></html> <br/>
@@ -413,12 +419,19 @@
 	</tag>
 	<tag>
 		<name>Body</name>
-		<tagclass>com.google.code.p.pageValidation.basicTag.HtmBodyTag</tagclass>
+		<tagclass>
+			com.google.code.p.pageValidation.basicTag.HtmBodyTag
+		</tagclass>
 		<bodycontent>JSP</bodycontent>
 		<info><![CDATA[
 			this tag impliment html's <body ...></body> <br/>
 			<br/>
 			]]></info>
+		<attribute><!-- jsPath must be setted -->
+			<name>jsPath</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
 		<attribute>
 			<name>alink</name>
 			<required>false</required>
@@ -577,7 +590,9 @@
 	</tag>
 	<tag>
 		<name>IntText</name>
-		<tagclass>com.google.code.p.pageValidation.tag.IntTextTag</tagclass>
+		<tagclass>
+			com.google.code.p.pageValidation.tag.IntTextTag
+		</tagclass>
 		<bodycontent>empty</bodycontent>
 		<info><![CDATA[
 			auto validate int text, impliment <input type = "text" .../> <br/>
@@ -807,7 +822,9 @@
 	</tag>
 	<tag>
 		<name>Money17</name>
-		<tagclass>com.google.code.p.pageValidation.tag.special.Money17Tag</tagclass>
+		<tagclass>
+			com.google.code.p.pageValidation.tag.special.Money17Tag
+		</tagclass>
 		<bodycontent>empty</bodycontent>
 		<info><![CDATA[
 			auto validate float text, impliment <input type = "text" .../> <br/>
@@ -1038,7 +1055,9 @@
 	</tag>
 	<tag>
 		<name>General</name>
-		<tagclass>com.google.code.p.pageValidation.tag.General</tagclass>
+		<tagclass>
+			com.google.code.p.pageValidation.tag.General
+		</tagclass>
 		<bodycontent>empty</bodycontent>
 		<info><![CDATA[
 			auto validate General text, impliment <input type = "text" .../> <br/>
@@ -1271,7 +1290,9 @@
 	</tag>
 	<tag>
 		<name>Email</name>
-		<tagclass>com.google.code.p.pageValidation.tag.special.EmailTag</tagclass>
+		<tagclass>
+			com.google.code.p.pageValidation.tag.special.EmailTag
+		</tagclass>
 		<bodycontent>empty</bodycontent>
 		<info><![CDATA[
 			auto validate Email text, impliment <input type = "text" .../> <br/>
@@ -1489,7 +1510,9 @@
 	</tag>
 	<tag>
 		<name>Name</name>
-		<tagclass>com.google.code.p.pageValidation.tag.special.NameTag</tagclass>
+		<tagclass>
+			com.google.code.p.pageValidation.tag.special.NameTag
+		</tagclass>
 		<bodycontent>empty</bodycontent>
 		<info><![CDATA[
 			auto validate Name text, impliment <input type = "text" .../> <br/>
@@ -1704,5 +1727,196 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<!-- html input defalut end -->
+	</tag>
+	<tag>
+		<name>AreaTag</name>
+		<tagclass>
+			com.google.code.p.pageValidation.tag.AreaTag
+		</tagclass>
+		<bodycontent>JPS</bodycontent>
+		<info><![CDATA[
+			auto validate AreaTag text, impliment <textarea .../> <br/>
+			if the id attribute setted the AreaTag's id is use it, else a auto id like "ta_....." is used. <br/>
+			this tag's parent must be Form tag<br/>
+			<br/>
+			this tag define a Name input text<br/> 
+			the flow attributes must be setted<br/>
+			name: the html input's name<br/>
+			title: the html input's title when a invalide float was inputed the hint name is title;
+			rows: html textarea's rows
+			cols: html textarea's cols
+			]]>
+		</info>
+		<attribute>
+			<name>canEmpty</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>maxLength</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>minLength</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>regExp</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>custJsCheckFun</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<!-- html text area defalut -->
+		<attribute>
+			<name>rows</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>cols</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>title</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>htmclass</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>readonly</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>disabled</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>accesskey</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>dir</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>istyle</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>lang</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>onblur</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>onchange</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>onclick</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>ondblclick</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>onfocus</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>onhelp</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>onkeydown</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>onkeypress</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>onkeyup</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>onmousedown</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>onmousemove</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>onmouseout</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>onmouseover</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>onmouseup</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>onselect</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>style</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>tabindex</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
 	</tag>
 </taglib>

@@ -100,7 +100,7 @@ VALIDATION.prototype.addHtmField = function(htmFieldID, htmTitle, htmMaxLen, htm
 	if(htmMaxLen !== undefined && htmMaxLen !== null){
 		htmField.maxLength = htmMaxLen;
 	}
-    if(htmFieldSize !== undefined && htmFieldSize !== null){
+    if(htmFieldSize !== undefined && htmFieldSize !== null && !htmField.type.toUpperCase () =="TEXTAREA"){
         htmField.size = htmFieldSize;
     }
     htmField.canEmpty = canEmpty;
@@ -426,9 +426,9 @@ VALIDATION.prototype.dateAlert = function(){
  * @param canEmpty  该场是否允许提交空值
  * @param regExp 校验该场的正则表达式 可以输入null  表示不校验
  * @param custCheckFun 需要调用的特殊js校验方法名 在基本校验结束时调用 可以输入“null”表示无特殊教研
- * @param minLen 输入最小长度
+ * @param minLength 输入最小长度
  */
- VALIDATION.prototype.addGeneralField = function(htmFieldID,htmTitle,htmMaxLen,htmFieldSize,canEmpty,regExp,custCheckFun,minLen){
+ VALIDATION.prototype.addGeneralField = function(htmFieldID,htmTitle,htmMaxLen,htmFieldSize,canEmpty,regExp,custCheckFun,minLength){
       this_val = this;
      //合法校验 该方法输入参数必须为htmField 在VALIDATION.addHtmField中将被调用
      var validate = function(htmField){
@@ -439,8 +439,8 @@ VALIDATION.prototype.dateAlert = function(){
          		return false;
 		}     
 		
-		if(minLen != null && minLen != undefined){
-			if(!this_val.lengthMinAlert(htmField,htmTitle,minLen))
+		if(minLength != null && minLength != undefined){
+			if(!this_val.lengthMinAlert(htmField,htmTitle,minLength))
          		return false;
 		} 	
 
@@ -456,7 +456,7 @@ VALIDATION.prototype.dateAlert = function(){
 	 this.addHtmField(htmFieldID, htmTitle, htmMaxLen, htmFieldSize, canEmpty,validate,"addGeneralField");
  }
  /************************************************VALIDATIONGeneral校验部分结束************************************/
-  
+ 
  
  var VALIDATION = VALIDATION;
 /************************************************VALIDATIONGeneral校验部分结束************************************/

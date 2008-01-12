@@ -22,6 +22,7 @@ public class HtmBodyTag implements javax.servlet.jsp.tagext.BodyTag {
 					marginwidth, onclick, ondblclick, onhelp, onkeydown, onkeypress, onkeyup, onload, onmousedown,
 					onmousemove, onmouseout, onmouseover, onmouseup, onunload, rightmargin, style, text, title,
 					topmargin, vlink;
+	private String jsPath = "";
 
 	public HtmBodyTag() {
 	}
@@ -43,15 +44,19 @@ public class HtmBodyTag implements javax.servlet.jsp.tagext.BodyTag {
 
 	/**
 	 * auto create a id for HtmlTag‘s chieldren
+	 * 
 	 * @param prifex
 	 * @return the unique id in a page
-	 * @throws JspException when the parent is null throw new JspException("The Form tag's parent must be HtmBodyTag ");
+	 * @throws JspException
+	 *             when the parent is null throw new JspException("The Form
+	 *             tag's parent must be HtmBodyTag ");
 	 */
 	public final String autoID(String prifex) throws JspException {
 		if (parent == null)
 			throw new JspException("The Form tag's parent must be HtmBodyTag ");
 		return parent.autoID(prifex);
 	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -100,15 +105,20 @@ public class HtmBodyTag implements javax.servlet.jsp.tagext.BodyTag {
 	 * @see javax.servlet.jsp.tagext.Tag#doStartTag()
 	 */
 	public int doStartTag() throws JspException {
-		/*notice when user haven't set a id must set a unique id for a tag
-		 * and must set it in doStartTag, two or more tag may use the same tag instance
-		 * to generat html code*/
-		if(this.getId() == null)this.setId(this.autoID("body"));
+		/*
+		 * notice when user haven't set a id must set a unique id for a tag and
+		 * must set it in doStartTag, two or more tag may use the same tag
+		 * instance to generat html code
+		 */
+		if (this.getId() == null)
+			this.setId(this.autoID("body"));
 
 		try {
 			StringBuffer tmpBuf = new StringBuffer();
-			tmpBuf.append("<script language=\"javascript\" type=\"text/javascript\" src=\"/validate/public/commValidation.js\"></script>");
-			tmpBuf.append("<script language=\"javascript\" type=\"text/javascript\" src=\"/validate/public/Validation.js\"></script>");
+			tmpBuf.append("<script language=\"javascript\" type=\"text/javascript\" src=\"" + getJsPath()
+							+ "commValidation.js\"></script>");
+			tmpBuf.append("<script language=\"javascript\" type=\"text/javascript\" src=\"" + getJsPath()
+							+ "Validation.js\"></script>");
 			tmpBuf.append("<body ");
 			tmpBuf.append(alink != null ? "alink=\"" + alink + "\"" : "");
 			tmpBuf.append(background != null ? "background=\"" + background + "\"" : "");
@@ -682,6 +692,24 @@ public class HtmBodyTag implements javax.servlet.jsp.tagext.BodyTag {
 	 */
 	public final void setParent(HtmlTag parent) {
 		this.parent = parent;
+	}
+
+	/**
+	 * @return the jsPath
+	 */
+	public final String getJsPath() {
+		return jsPath;
+	}
+
+	/**
+	 * @param jsPath
+	 *            the jsPath to set
+	 */
+	public final void setJsPath(String jsPath) {
+		if (jsPath.charAt(jsPath.length() - 1) != '/') {
+			jsPath += '/';
+		}
+		this.jsPath = jsPath;
 	}
 
 }

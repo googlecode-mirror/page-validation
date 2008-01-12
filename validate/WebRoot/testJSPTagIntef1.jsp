@@ -13,7 +13,7 @@
 		String test = "35";
 	%>
 
-	<v:Body>
+	<v:Body jsPath="public/">
 		<v:Form action="index.jsp" id="abcd">
 			<table>
 				<tr>
@@ -21,6 +21,8 @@
 						金额
 						<v:Money17 name="money17" title="money17" maxlength="19" value="<%=test %>" maxValue="100.00"></v:Money17>
 						&lt; Money17 name="money17" title="money17" maxValue="100.00"&gt;
+						
+						
 					</td>
 				</tr>
 				<tr>
@@ -28,6 +30,7 @@
 						金额1
 						<v:Money17 name="money1" title="金额1" minValue="null"></v:Money17>
 						&lt;Money17 name="money1" title="金额1" &gt;
+						<v:AreaTag rows="10" cols="5" name="textarea" title="textarea" maxLength="10" minLength="5"></v:AreaTag>
 					</td>
 				</tr>
 				<tr>
