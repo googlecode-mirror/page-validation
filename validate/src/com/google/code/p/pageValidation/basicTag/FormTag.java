@@ -4,9 +4,6 @@
 package com.google.code.p.pageValidation.basicTag;
 
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
@@ -15,7 +12,8 @@ import javax.servlet.jsp.tagext.BodyContent;
 import javax.servlet.jsp.tagext.BodyTag;
 import javax.servlet.jsp.tagext.Tag;
 
-import com.google.code.p.pageValidation.ValidateHtmFieldTag;
+import com.google.code.p.pageValidation.beans.FormBean;
+import com.google.code.p.pageValidation.beans.TagBean;
 
 /**
  * @author niebo
@@ -49,20 +47,21 @@ public class FormTag implements BodyTag {
 	private String title;
 
 	public FormTag() {
-		this.setId(AutoID.newID("FORM"));// if you do not set formId program will auto set a id
 		this.setMethod("post");		// default "post"
 	}
 
 	private BodyContent bodyContent = null;
 	private PageContext pageContext = null;
-	private final List validateHtmFieldTagList = new LinkedList();;
 	private JspWriter out = null;
+	private HtmBodyTag parent;
+	//the formBean must create in doStart and set to null in doEnd
+	private FormBean formBean = null;
 
 	/**
 	 * @param valHtmFieldTag
 	 */
-	public void addValidateHtmFieldTag(ValidateHtmFieldTag valHtmFieldTag) {
-		validateHtmFieldTagList.add(valHtmFieldTag);
+	public void addTagBean(TagBean bean) {
+		formBean.addTagBean(bean);
 	}
 
 	/*
@@ -98,20 +97,28 @@ public class FormTag implements BodyTag {
 	 * @see javax.servlet.jsp.tagext.Tag#doEndTag()
 	 */
 	public int doEndTag() throws JspException {
+		if(parent == null) throw new JspException("The Form tag's parent must be HtmBodyTag ");
+		
+		//release formBean and id as it's live scope only between doStartTag and doEndTag
+		formBean = null;
+		this.setId(null);
+		
 		try {
 			out.println("</form>");
-			String jsValName = "VAL_" + this.getId();
-			StringBuffer tmpBuf = new StringBuffer();
-			tmpBuf.append("<script language = \"javascript\" type=\"text/javascript\">\n");
-			tmpBuf.append("var " + jsValName + " =new VALIDATION(\"" + this.id + "\")\n");
-			Iterator ator = this.validateHtmFieldTagList.iterator();
-			while (ator.hasNext()) {
-				ValidateHtmFieldTag tag = (ValidateHtmFieldTag) ator.next();
-				tmpBuf.append(tag.getValdationJsString(jsValName));
-				tmpBuf.append("\n");
-			}
-			tmpBuf.append("</script>");
-			out.println(tmpBuf);
+			
+			//this part change to do in HtmlTag
+//			String jsValName = "VAL_" + this.getId();
+//			StringBuffer tmpBuf = new StringBuffer();
+//			tmpBuf.append("<script language = \"javascript\" type=\"text/javascript\">\n");
+//			tmpBuf.append("var " + jsValName + " =new VALIDATION(\"" + this.id + "\")\n");
+//			Iterator ator = this.validateHtmFieldTagList.iterator();
+//			while (ator.hasNext()) {
+//				ValidateHtmFieldTag tag = (ValidateHtmFieldTag) ator.next();
+//				tmpBuf.append(tag.getValdationJsString(jsValName));
+//				tmpBuf.append("\n");
+//			}
+//			tmpBuf.append("</script>");
+//			out.println(tmpBuf);
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new JspException("IOException when FormTag.doEndTag");
@@ -125,8 +132,14 @@ public class FormTag implements BodyTag {
 	 * @see javax.servlet.jsp.tagext.Tag#doStartTag()
 	 */
 	public int doStartTag() throws JspException {
-		//clear last time added validateHtmFieldTags
-		validateHtmFieldTagList.clear();
+		if(parent == null) throw new JspException("The Form tag's parent must be HtmBodyTag ");
+		/*notice when user haven't set a id must set a unique id for a tag
+		 * and must set it in doStartTag, two or more tag may use the same tag instance
+		 * to generat html code*/
+		if(this.getId() == null)this.setId(parent.autoID("form"));
+		this.formBean = new FormBean(this);
+		parent.addFormBean(formBean);
+		
 		try {
 			StringBuffer tmpBuf = new StringBuffer("<form ");
 			tmpBuf.append(id != null ? " id=" + "\"" + id + "\"" : "");
@@ -169,7 +182,7 @@ public class FormTag implements BodyTag {
 	 * @see javax.servlet.jsp.tagext.Tag#getParent()
 	 */
 	public Tag getParent() {
-		return null;
+		return parent;
 	}
 
 	/*
@@ -197,7 +210,7 @@ public class FormTag implements BodyTag {
 	 * @see javax.servlet.jsp.tagext.Tag#setParent(javax.servlet.jsp.tagext.Tag)
 	 */
 	public void setParent(Tag t) {
-
+		this.parent = (HtmBodyTag)t;
 	}
 
 	/**
@@ -293,7 +306,7 @@ public class FormTag implements BodyTag {
 	 * @param htmclass
 	 *            the htmclass to set
 	 */
-	public final void setHtmclass(String htmclass) {
+	public final void setClass(String htmclass) {
 		this.htmclass = htmclass;
 	}
 

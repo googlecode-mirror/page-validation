@@ -80,8 +80,8 @@ public class FloatTextTag extends TextTag {
 	 * 
 	 * @see com.google.code.p.pageValidation.ValidateHtmFieldTag#getValdationJsString(java.lang.String)
 	 */
-	public String getValdationJsString(String jsValidateVarName) {
-		StringBuffer tmpBuf = new StringBuffer(jsValidateVarName + ".addFloatField(");
+	public String getValdationJsString() {
+		StringBuffer tmpBuf = new StringBuffer("addFloatField(");
 		tmpBuf.append("\"" + getId() + "\",");
 		tmpBuf.append("\"" + getTitle() + "\",");
 		tmpBuf.append(getMaxlength() + ",");

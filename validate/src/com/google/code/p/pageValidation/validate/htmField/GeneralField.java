@@ -2,9 +2,9 @@ package com.google.code.p.pageValidation.validate.htmField;
 
 import com.google.code.p.pageValidation.validate.ValidateException;
 
-
-public class GeneralField extends ValHtmField{
+public class GeneralField extends ValHtmField {
 	private String regExp;
+
 	/**
 	 * @return the regExp
 	 */

@@ -35,7 +35,11 @@ VALIDATION.prototype.setSubCheckForm = function(formID){
 		if(this_val.subCheck()){
 		//做<form ...中的onsubmit校验
 			if(oldsub != null && oldsub instanceof Function){
-				return oldsub();
+				var pageres = oldsub();
+				if(pageres !== true && pageres !== false){
+					alertAndThrow("VALIDATION requare onsubmit mathod return true or false at function: \n"+oldsub.toString());
+				}				
+				return pageres;
 			}else return true;
 		}else return false;		
 	}				
@@ -66,8 +70,8 @@ VALIDATION.prototype.subCheck = function(){
 *注意：当一个输入场是只读的时候不进行校验 
 * @param htmFieldID Float场的ID属性 必须输入
 * @param htmTitle  提示信息的标题 必须输入
-* @param htmMaxLen 该场的maxlength属性 必须输入
-* @param htmFieldSize 该场得size属性 必须输入
+* @param htmMaxLen 该场的maxlength属性 
+* @param htmFieldSize 该场得size属性 
 * @param canEmpty  该场是否允许提交空值 必须输入
 * @param validateFun 子函数(比如:addFloatField)的校验函数 必须输入
 * @param chieldFunName 子函数名 比如：“addFloatField”
@@ -76,8 +80,8 @@ VALIDATION.prototype.addHtmField = function(htmFieldID, htmTitle, htmMaxLen, htm
     var this_val = this;
 	undefinedNullThrow(htmFieldID, "htmFieldID", "VALIDATION.addHtmField");
 	undefinedNullThrow(htmTitle, "htmTitle", "VALIDATION.addHtmField");
-	undefinedNullThrow(htmMaxLen, "htmMaxLen", "VALIDATION.addHtmField");
-	undefinedNullThrow(htmFieldSize, "htmFieldSize", "VALIDATION.addHtmField");
+	//undefinedNullThrow(htmMaxLen, "htmMaxLen", "VALIDATION.addHtmField");
+	//undefinedNullThrow(htmFieldSize, "htmFieldSize", "VALIDATION.addHtmField");
 	undefinedNullThrow(canEmpty, "canEmpty", "VALIDATION.addHtmField");
 	//undefinedNullThrow(custCheckFun, "custCheckFun", "VALIDATION.addHtmField");//可以为null
     this.SUB_CHECK_FIELD_ARR[htmFieldID]=htmFieldID;
@@ -87,12 +91,18 @@ VALIDATION.prototype.addHtmField = function(htmFieldID, htmTitle, htmMaxLen, htm
        alertAndThrow("找不到ID为"+htmFieldID+"的输入域 请处理");
        return false;
     }
-    if(!htmField.type.toUpperCase () =="TEXT"){
+    if((!htmField.type.toUpperCase () =="TEXTAREA") ||
+    	(!htmField.type.toUpperCase () =="TEXT") ||
+     	(!htmField.type.toUpperCase () =="PASSWORD")){
        alertAndThrow("ID为"+htmFieldID+"的不是输入域 请处理");
        return false;
     }
-	htmField.maxLength = htmMaxLen;
-    htmField.size = htmFieldSize;
+	if(htmMaxLen !== undefined && htmMaxLen !== null){
+		htmField.maxLength = htmMaxLen;
+	}
+    if(htmFieldSize !== undefined && htmFieldSize !== null){
+        htmField.size = htmFieldSize;
+    }
     htmField.canEmpty = canEmpty;
 	
  	var pageBlur = htmField.onblur;
@@ -108,7 +118,11 @@ VALIDATION.prototype.addHtmField = function(htmFieldID, htmTitle, htmMaxLen, htm
 		var r = true;
 		//先做<input ... >中定义的onblur
 		if(pageBlur != null && pageBlur instanceof Function){
-			r = r && pageBlur(); 
+			var pageres = pageBlur();
+			if(pageres !== true && pageres !== false){
+				alertAndThrow("VALIDATION requare onblur mathod return true or false at function: \n"+pageBlur.toString());
+			}
+			r = r && pageres; 
 		} 
         
 		//防止不输入时死循环不输入不校验
@@ -209,7 +223,6 @@ VALIDATION.prototype.intMaxAlert = function(htmField,htmTitle,intMaxValue){
 	    alert("\""+htmTitle+"\""+"应小于等于"+intMaxValue+",请重新输入！");
 	    return false;
 	}
-	document.getElementById
 	return true;
 }
 /**
@@ -268,6 +281,26 @@ VALIDATION.prototype.floatMinAlert = function(htmField,htmTitle,floatMinValue){
 	return true;
 
 }
+/**
+*格式化浮点数
+*num: 需要格式化得浮点数
+*decNum：小数位数
+*返回＃＃.### (小数点后decNum位)
+*/
+VALIDATION.prototype.formatFloat = function(num,decNum){
+    undefinedNullThrow(decNum, "decNum", "VALIDATION.formatFloat");
+    if(num == null||num == undefined || isNaN(num) || num == "") return num;
+    var r = num.toString();
+    if(r.indexOf(".") == -1) r = r + ".";
+    var arr = r.split("\.");
+    if (arr[1].length > decNum) arr[1] = arr[1].substring(0,decNum);
+    else {
+        while(arr[1].length < decNum){
+            arr[1] = arr[1]+"0";
+        }
+    }
+    return arr[0] + (decNum != 0?".":"")+arr[1];
+}
 //regExp
 /**
 *检查输入是否满足正则表达式
@@ -296,8 +329,8 @@ VALIDATION.prototype.dateAlert = function(){
 /************************************************VALIDATIONFloat校验部分结束************************************/
 /**
  * 添加一个需要校验的Float场，该方法写入js同名方法调用到网页以
- * @param htmFieldID Float Field's id attribute
- * @param htmTitle  提示信息的标体
+ * @param htmFieldID Float场的ID属性
+ * @param htmTitle  提示信息的标题
  * @param htmMaxLen 该场的maxlength属性
  * @param htmFieldSize 该场得size属性
  * @param canEmpty  该场是否允许提交空值
@@ -318,11 +351,19 @@ VALIDATION.prototype.dateAlert = function(){
      	if(!this_val.regMatchAlert(htmField,htmTitle,reg,"输入不合法，请重新输入！"))return false;
      	
         //最大值
-        if(!this_val.floatMaxAlert(htmField,htmTitle,maxValStr))return false;
+        if(maxValStr != null && maxValStr != undefined){
+         	if(!this_val.floatMaxAlert(htmField,htmTitle,maxValStr))
+         	return false;
+        }
      	
 		//最小值
-		if(!this_val.floatMinAlert(htmField,htmTitle,minValStr))return false;			
-
+		if(minValStr != null && minValStr != undefined){
+			if(!this_val.floatMinAlert(htmField,htmTitle,minValStr))
+			return false;
+		}			
+		
+		htmField.value = this_val.formatFloat(htmField.value,decNum);
+		
      	if(custCheckFun instanceof Function) return custCheckFun(htmFieldID,htmTitle,htmMaxLen,htmFieldSize,canEmpty,intNum,decNum,maxValStr,minValStr,custCheckFun);
         return true;
      }
@@ -330,7 +371,52 @@ VALIDATION.prototype.dateAlert = function(){
 	 this.addHtmField(htmFieldID, htmTitle, htmMaxLen, htmFieldSize, canEmpty,validate,"addFloatField");
  }
 /************************************************VALIDATIONFloat校验部分结束************************************/
-/************************************************VALIDATIONGeneral校验部分结束************************************/
+
+/************************************************VALIDATIONInt校验部分结束************************************/
+/**
+ * 添加一个需要校验的Int场，该方法写入js同名方法调用到网页以
+ * @param htmFieldID Int场的ID属性
+ * @param htmTitle  提示信息的标题
+ * @param htmMaxLen 该场的maxlength属性
+ * @param htmFieldSize 该场得size属性
+ * @param canEmpty  该场是否允许提交空值
+ * @param intNum 该场的整数部分最大长度
+ * @param decNum 该场的小数部分最大长度
+ * @param maxValStr 该场的最大值 可输入null表示无上限
+ * @param minValStr 该场的最小值 可输入null表示无下限
+ * @param custCheckFun 需要调用的特殊js校验方法名 在基本校验结束时调用 可以输入“null”表示无特殊校验
+ */
+ VALIDATION.prototype.addIntField = function(htmFieldID,htmTitle,htmMaxLen,htmFieldSize,canEmpty,maxValStr,minValStr,custCheckFun){
+     this_val = this;
+     //合法校验 该方法输入参数必须为htmField 在VALIDATION.addHtmField中将被调用
+     var validate = function(htmField){
+     	htmField.value = COMMVAL.strTrim(htmField.value);	
+     	
+     	//reg
+     	var reg = new RegExp("^[-\+]?([1-9][\\d]+)|^0$");
+     	if(!this_val.regMatchAlert(htmField,htmTitle,reg,"输入不合法，请重新输入！"))return false;
+     	
+        //最大值
+        if(maxValStr != null && maxValStr != undefined){
+         	if(!this_val.intMaxAlert(htmField,htmTitle,maxValStr))
+         	return false;
+        }
+     	
+		//最小值
+		if(minValStr != null && minValStr != undefined){
+			if(!this_val.intMinAlert(htmField,htmTitle,minValStr))
+			return false;
+		}			
+
+     	if(custCheckFun instanceof Function) return custCheckFun(htmFieldID,htmTitle,htmMaxLen,htmFieldSize,canEmpty,intNum,decNum,maxValStr,minValStr,custCheckFun);
+        return true;
+     }
+    //所有的添加校验域的函数必须最后一句这样调用
+	 this.addHtmField(htmFieldID, htmTitle, htmMaxLen, htmFieldSize, canEmpty,validate,"addFloatField");
+ }
+/************************************************VALIDATIONInt校验部分结束************************************/
+
+/************************************************VALIDATIONGeneral校验部分************************************/
 /**
  * 添加一个需要校验的Float场，该方法写入js同名方法调用到网页以
  * @param htmFieldID Float场的ID属性
@@ -340,24 +426,37 @@ VALIDATION.prototype.dateAlert = function(){
  * @param canEmpty  该场是否允许提交空值
  * @param regExp 校验该场的正则表达式 可以输入null  表示不校验
  * @param custCheckFun 需要调用的特殊js校验方法名 在基本校验结束时调用 可以输入“null”表示无特殊教研
+ * @param minLen 输入最小长度
  */
- VALIDATION.prototype.addGeneralField = function(htmFieldID,htmTitle,htmMaxLen,htmFieldSize,canEmpty,regExp,custCheckFun){
+ VALIDATION.prototype.addGeneralField = function(htmFieldID,htmTitle,htmMaxLen,htmFieldSize,canEmpty,regExp,custCheckFun,minLen){
+      this_val = this;
      //合法校验 该方法输入参数必须为htmField 在VALIDATION.addHtmField中将被调用
      var validate = function(htmField){
      	htmField.value = COMMVAL.strTrim(htmField.value);	
-     	if(COMMVAL.strLength(htmField.value) > htmMaxLen){
-     		alert("\""+htmTitle+"\""+"超过最大长度："+htmMaxLen+",请重新输入！");
-     	}
-     	if(!COMMVAL.valGeneral(htmField.value,regExp)){
-             alert("\""+htmTitle+"\""+"输入不合法,请重新输入！");
-             return false;
-        };
+		
+		if(htmMaxLen != null && htmMaxLen != undefined){
+			if(!this_val.lengthMaxAlert(htmField,htmTitle,htmMaxLen))
+         		return false;
+		}     
+		
+		if(minLen != null && minLen != undefined){
+			if(!this_val.lengthMinAlert(htmField,htmTitle,minLen))
+         		return false;
+		} 	
+
+		if(regExp != null && regExp != undefined){
+			if(!this_val.regMatchAlert(htmField,htmTitle,regExp,"输入不合法,请重新输入！"))
+         		return false;
+		} 
+
       	if(custCheckFun instanceof Function) return custCheckFun(htmFieldID,htmTitle,htmMaxLen,htmFieldSize,canEmpty,regExp,custCheckFun);
         return true;
      }
     //所有的添加校验域的函数必须最后一句这样调用
 	 this.addHtmField(htmFieldID, htmTitle, htmMaxLen, htmFieldSize, canEmpty,validate,"addGeneralField");
  }
+ /************************************************VALIDATIONGeneral校验部分结束************************************/
+  
  
  var VALIDATION = VALIDATION;
 /************************************************VALIDATIONGeneral校验部分结束************************************/

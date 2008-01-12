@@ -17,5 +17,5 @@ public interface ValidateHtmFieldTag extends Tag {
 	 * @param jsValidateVarName the javascript class VALIDATION's instance name
 	 * @throws IOException 
 	 */
-	public String getValdationJsString(String jsValidateVarName);
+	public String getValdationJsString();
 }
