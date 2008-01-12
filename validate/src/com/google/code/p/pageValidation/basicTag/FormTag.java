@@ -45,6 +45,7 @@ public class FormTag implements BodyTag {
 	private String style;
 	private String target;
 	private String title;
+	private String custJsCheckFun = null;
 
 	public FormTag() {
 		this.setMethod("post");		// default "post"
@@ -600,6 +601,20 @@ public class FormTag implements BodyTag {
 	 */
 	public final PageContext getPageContext() {
 		return pageContext;
+	}
+
+	/**
+	 * @return the custJsCheckFun
+	 */
+	public final String getCustJsCheckFun() {
+		return custJsCheckFun;
+	}
+
+	/**
+	 * @param custJsCheckFun the custJsCheckFun to set
+	 */
+	public final void setCustJsCheckFun(String custJsCheckFun) {
+		this.custJsCheckFun = custJsCheckFun;
 	}
 
 }

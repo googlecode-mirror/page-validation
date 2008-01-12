@@ -168,7 +168,7 @@ VALIDATION.prototype.lengthMaxAlert = function(htmField,htmTitle,maxLength){
 	undefinedNullThrow(maxLength, "maxLength", "VALIDATION.lengthMaxAlert");
 	undefinedNullThrow(htmTitle, "htmTitle", "VALIDATION.lengthMaxAlert");
 	if(COMMVAL.strLength(htmField.value) > maxLength){
-     	alert("\""+htmTitle+"\""+"长度不应大于："+maxLength+",请重新输入！");
+     	alert("\""+htmTitle+"\""+"长度(一个中文/全角字符长度为2)不应大于："+maxLength+",请重新输入！");
      	return false
     }
     return true;
@@ -185,7 +185,7 @@ VALIDATION.prototype.lengthMinAlert = function(htmField,htmTitle,minLength){
 	undefinedNullThrow(minLength, "minLength", "VALIDATION.lengthMinAlert");
 	undefinedNullThrow(htmTitle, "htmTitle", "VALIDATION.lengthMinAlert");
 	if(COMMVAL.strLength(htmField.value) < minLength){
-     	alert("\""+htmTitle+"\""+"长度不应小于："+minLength+",请重新输入！");
+     	alert("\""+htmTitle+"\""+"长度(一个中文/全角字符长度为2)不应小于："+minLength+",请重新输入！");
      	return false
     }
     return true;
@@ -202,7 +202,7 @@ VALIDATION.prototype.lengthEqualAlert = function(htmField,htmTitle,length){
 	undefinedNullThrow(length, "length", "VALIDATION.addHtmField");
 	undefinedNullThrow(htmTitle, "htmTitle", "VALIDATION.addHtmField");
 	if(COMMVAL.strLength(htmField.value) == length){
-     	alert("\""+htmTitle+"\""+"长度应为："+length+",请重新输入！");
+     	alert("\""+htmTitle+"\""+"长度(一个中文/全角字符长度为2)应为："+length+",请重新输入！");
      	return false
     }
     return true;		
@@ -248,7 +248,7 @@ VALIDATION.prototype.intMinAlert = function(htmField,htmTitle,intMinValue){
 *检查输入float值是否大于 floatMaxValue
 *htmField 需要检查得htmField
 *htmTitle 需要检查得htmField 对应title
-*floatMaxValue 最小长度
+*floatMaxValue 最小值
 *如果不满足给出提示
 */	
 VALIDATION.prototype.floatMaxAlert = function(htmField,htmTitle,floatMaxValue){

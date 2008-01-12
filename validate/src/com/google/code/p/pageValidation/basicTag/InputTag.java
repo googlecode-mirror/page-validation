@@ -17,7 +17,7 @@ import com.google.code.p.pageValidation.beans.TagBean;
  * @author niebo
  * 
  */
-abstract class InputTag implements ValidateHtmFieldTag {
+abstract class InputTag extends ValidateHtmFieldTag {
 
 	private PageContext pageContext;
 	private JspWriter out;
@@ -32,22 +32,6 @@ abstract class InputTag implements ValidateHtmFieldTag {
 					onmouseout = null, onmouseover = null, onmouseup = null, onselect = null, src = null, style = null,
 					tabindex = null, usemap = null, type = null;
 	private Integer maxlength = null, size = null;
-	private boolean canEmpty = false;// defalt do not allow empty
-
-	/**
-	 * @return the canEmpty
-	 */
-	public final boolean isCanEmpty() {
-		return canEmpty;
-	}
-
-	/**
-	 * @param canEmpty
-	 *            the canEmpty to set
-	 */
-	public final void setCanEmpty(boolean canEmpty) {
-		this.canEmpty = canEmpty;
-	}
 
 	public InputTag(String type) {
 		this.setType(type);

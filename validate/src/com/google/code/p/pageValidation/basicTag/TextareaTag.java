@@ -17,7 +17,7 @@ import com.google.code.p.pageValidation.beans.TagBean;
  * @author nie
  * 
  */
-public abstract class TextareaTag implements ValidateHtmFieldTag {
+public abstract class TextareaTag extends ValidateHtmFieldTag {
 	private Integer rows = null;
 	private Integer cols = null;
 	private String title = null;
@@ -47,7 +47,6 @@ public abstract class TextareaTag implements ValidateHtmFieldTag {
 	private String onselect = null;
 	private String style = null;
 	private String tabindex = null;
-	private boolean canEmpty = false;
 
 	private PageContext pageContext;
 	private JspWriter out;
@@ -61,10 +60,10 @@ public abstract class TextareaTag implements ValidateHtmFieldTag {
 	 * 
 	 * @see javax.servlet.jsp.tagext.Tag#doEndTag()
 	 *//*
-	 * (non-Javadoc)
-	 * 
-	 * @see javax.servlet.jsp.tagext.Tag#doEndTag()
-	 */
+		 * (non-Javadoc)
+		 * 
+		 * @see javax.servlet.jsp.tagext.Tag#doEndTag()
+		 */
 	public final int doEndTag() throws JspException {
 		parent.addTagBean(new TagBean(this));
 		this.setId(null);
@@ -605,21 +604,6 @@ public abstract class TextareaTag implements ValidateHtmFieldTag {
 	}
 
 	/**
-	 * @return the canEmpty
-	 */
-	public final boolean isCanEmpty() {
-		return canEmpty;
-	}
-
-	/**
-	 * @param canEmpty
-	 *            the canEmpty to set
-	 */
-	public final void setCanEmpty(boolean canEmpty) {
-		this.canEmpty = canEmpty;
-	}
-
-	/**
 	 * @return the out
 	 */
 	public final JspWriter getOut() {
@@ -640,5 +624,4 @@ public abstract class TextareaTag implements ValidateHtmFieldTag {
 	public final PageContext getPageContext() {
 		return pageContext;
 	}
-
 }
