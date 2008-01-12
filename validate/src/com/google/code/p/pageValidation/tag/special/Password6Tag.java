@@ -15,5 +15,10 @@ public class Password6Tag extends PasswordTag {
 		// TODO Auto-generated constructor stub
 		
 	}
+
+	public String getValdationJsString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

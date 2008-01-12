@@ -91,7 +91,7 @@ public class FloatTextTag extends TextTag {
 		tmpBuf.append(getDecNum() + ",");
 		tmpBuf.append(getMaxValue() + ",");
 		tmpBuf.append(getMinValue() + ",");
-		tmpBuf.append("null");
+		tmpBuf.append(getCustJsCheckFun());
 		tmpBuf.append(");");
 		return tmpBuf.toString();
 	}

@@ -106,20 +106,6 @@ public class FormTag implements BodyTag {
 		
 		try {
 			out.println("</form>");
-			
-			//this part change to do in HtmlTag
-//			String jsValName = "VAL_" + this.getId();
-//			StringBuffer tmpBuf = new StringBuffer();
-//			tmpBuf.append("<script language = \"javascript\" type=\"text/javascript\">\n");
-//			tmpBuf.append("var " + jsValName + " =new VALIDATION(\"" + this.id + "\")\n");
-//			Iterator ator = this.validateHtmFieldTagList.iterator();
-//			while (ator.hasNext()) {
-//				ValidateHtmFieldTag tag = (ValidateHtmFieldTag) ator.next();
-//				tmpBuf.append(tag.getValdationJsString(jsValName));
-//				tmpBuf.append("\n");
-//			}
-//			tmpBuf.append("</script>");
-//			out.println(tmpBuf);
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new JspException("IOException when FormTag.doEndTag");

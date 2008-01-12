@@ -46,7 +46,7 @@ public class IntTextTag extends TextTag {
 		stringBuffer.append(getSize()+",");
 		stringBuffer.append(isCanEmpty()+",");
 		stringBuffer.append(getMaxValue()+",");
-		stringBuffer.append(getMinValue()+",null"+");\n");
+		stringBuffer.append(getMinValue()+","+this.getCustJsCheckFun()+");\n");
 		return stringBuffer.toString();
 	}
 }

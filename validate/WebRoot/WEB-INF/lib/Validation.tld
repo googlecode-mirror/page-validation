@@ -188,6 +188,11 @@
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
+		<attribute>
+			<name>custJsCheckFun</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
 		<!-- html input defalut -->
 		<attribute><!-- must have  the name for sumbit -->
 			<name>name</name>
@@ -617,6 +622,11 @@
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
+		<attribute>
+			<name>custJsCheckFun</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
 		<!-- html input defalut -->
 		<attribute><!-- must have  the name for sumbit -->
 			<name>name</name>
@@ -847,6 +857,11 @@
 		</attribute>
 		<attribute>
 			<name>minValue</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>custJsCheckFun</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
@@ -1085,6 +1100,11 @@
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
+		<attribute>
+			<name>custJsCheckFun</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
 		<!-- html input defalut -->
 		<attribute><!-- must have  the name for sumbit -->
 			<name>name</name>
@@ -1305,6 +1325,11 @@
 			title: the html input's title when a invalide float was inputed the hint name is title;
 			]]>
 		</info>
+		<attribute>
+			<name>custJsCheckFun</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
 		<!-- html input defalut -->
 		<attribute><!-- must have  the name for sumbit -->
 			<name>name</name>
@@ -1525,6 +1550,11 @@
 			title: the html input's title when a invalide float was inputed the hint name is title;
 			]]>
 		</info>
+		<attribute>
+			<name>custJsCheckFun</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
 		<!-- html input defalut -->
 		<attribute><!-- must have  the name for sumbit -->
 			<name>name</name>
@@ -1747,6 +1777,11 @@
 			cols: html textarea's cols
 			]]>
 		</info>
+		<attribute>
+			<name>custJsCheckFun</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
 		<attribute>
 			<name>canEmpty</name>
 			<required>false</required>
