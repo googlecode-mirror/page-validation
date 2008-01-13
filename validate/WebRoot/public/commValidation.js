@@ -78,20 +78,23 @@ COMMVAL_class.prototype.valInt = function () {
 /**
 *取得s的长度 (中文字符一个长度算2) s必须输入
 */
-COMMVAL_class.prototype.strLength = function (s) {
-	undefinedNullThrow(s,"s","COMMVAL_class.strLength");
-	var len = 0, i = 0;
-	for (i = 0; i < s.length; i += 1) {
-		var c = s.substr(i, 1);
-		var ts = escape(c);
-		if (ts.substring(0, 2) == "%u") {
-			len += 2;
-		} else {
-			len += 1;
-		}
-	}
-	return len;
+COMMVAL_class.prototype.strLength = function (str) {
+	undefinedNullThrow(str,"s","COMMVAL_class.strLength");
+	
+    var re=/[\x00-\xff]/g;
+    var len=str.length;
+    var array=str.match(re);
+    if (array　=== null)
+    {
+        array="";
+    }
+    return len*2 - array.length;
 };
+//add a get ByteLength for String Object;
+String.prototype.getByteLength = function(){
+	return COMMVAL_class.prototype.strLength(this);
+};
+
 //str前后的空格除去
 COMMVAL_class.prototype.strTrim = function (str) {
 	undefinedNullThrow(str,"str","COMMVAL_class.strTrim");
