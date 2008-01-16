@@ -10,5 +10,6 @@ public class NameTag extends GeneralTextTag {
 	public NameTag(){
 		this.setMaxlength(new Integer(30));
 		this.setRegExp("new RegExp(\"^[^'\\\"()@$%^*<>&?]+$\")");
+		this.setTitle("应为不包含&prime;&prime;()@$%^*<>&?的字符串！");
 	}
 }

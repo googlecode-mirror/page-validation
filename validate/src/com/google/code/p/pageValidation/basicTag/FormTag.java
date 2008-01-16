@@ -126,7 +126,7 @@ public class FormTag implements BodyTag {
 		if(this.getId() == null)this.setId(parent.autoID("form"));
 		this.formBean = new FormBean(this);
 		parent.addFormBean(formBean);
-		
+
 		try {
 			StringBuffer tmpBuf = new StringBuffer("<form ");
 			tmpBuf.append(id != null ? " id=" + "\"" + id + "\"" : "");

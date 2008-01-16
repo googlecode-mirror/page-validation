@@ -9,7 +9,7 @@ import javax.servlet.jsp.tagext.Tag;
 
 /**
  * @author niebo
- * 
+ *
  */
 public abstract class ValidateHtmFieldTag implements Tag {
 	/**
@@ -25,6 +25,38 @@ public abstract class ValidateHtmFieldTag implements Tag {
 	private String custJsCheckFun = null;
 	private Integer maxLength = null;
 	private Integer minLength = null;
+	private String title = null;
+	private String hintName = null;
+	private String id = null;
+
+	/**
+	 * @return the title
+	 */
+	public final String getTitle() {
+		if(title == null) return null;
+		return title.replaceAll("'","&prime;").replaceAll("\"","&Prime;");
+	}
+
+	/**
+	 * @param title the title to set
+	 */
+	public final void setTitle(String title) {
+		this.title = title;
+	}
+
+	/**
+	 * @return the hintName
+	 */
+	public final String getHintName() {
+		return hintName;
+	}
+
+	/**
+	 * @param hintName the hintName to set
+	 */
+	public final void setHintName(String hintName) {
+		this.hintName = hintName;
+	}
 
 	/**
 	 * @return the canEmpty
@@ -84,5 +116,17 @@ public abstract class ValidateHtmFieldTag implements Tag {
 	 */
 	public final void setMinLength(Integer minLength) {
 		this.minLength = minLength;
+	}
+	/**
+	 * @return 返回 id。
+	 */
+	public final String getId() {
+		return id;
+	}
+	/**
+	 * @param id 要设置的 id。
+	 */
+	public final void setId(String id) {
+		this.id = id;
 	}
 }

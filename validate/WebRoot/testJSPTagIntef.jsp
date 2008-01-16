@@ -2,7 +2,8 @@
 
 <v:Html>
 	<HEAD>
-		<%@ page language="java" contentType="text/html; charset=GB18030" pageEncoding="GB18030"%>
+		<%@ page language="java" contentType="text/html; charset=GB18030"
+			pageEncoding="GB18030"%>
 		<META http-equiv="Content-Type" content="text/html; charset=GB18030">
 		<META name="GENERATOR" content="IBM Software Development Platform">
 		<META http-equiv="Content-Style-Type" content="text/css">
@@ -18,31 +19,35 @@
 			<table>
 				<tr>
 					<td>
+					
 						金额
-						<v:Money17 name="money17" title="money17" maxlength="19" size="20" value="<%=test %>" maxValue="100.00"></v:Money17>
-						&lt; v:Money17 name="money17" title="money17" maxlength="19" value="<%=test %>" maxValue="100.00"&gt;
-						
+						<v:Money17 name="money17" hintName="money17" maxlength="19" size="20"
+							value="<%=test%>" ></v:Money17>
+						&lt; v:Money17 name="money17" title="money17" maxlength="19"
+						value="<%=test%>" maxValue="100.00"&gt;
+
 					</td>
 				</tr>
 				<tr>
 					<td>
 						金额1
-						<v:Money17 name="money1" title="金额1" minValue="null"></v:Money17>
-						&lt;Money17 name="money1" title="金额1" &gt;
-						
+						<v:Money17 name="money1" hintName="金额1" minValue="null" maxValue="100.00" title="应输入小于100.00的浮点数！"></v:Money17>
+						&lt;Money17 name="money1" hintName="金额1" minValue="null" maxValue="100.00" title="应输入小于100.00的浮点数！"&gt;
+
 					</td>
 				</tr>
 				<tr>
 					<td>
 						Email
-						<v:Email name="Email" title="Email"></v:Email>
-						<v:Email name="Email" title="Email"></v:Email>
+						<v:Email name="Email" hintName="Email"></v:Email>
+						<v:Email name="Email1" hintName="Email1"></v:Email>
 					</td>
 				</tr>
-				
+
 				<tr>
 					<td>
-						Name<v:Name name="name" title="Name"></v:Name>
+						Name
+						<v:Name name="name" hintName="Name"></v:Name>
 						&lt;v:Name name="name" title="Name"&gt;
 					</td>
 				</tr>
@@ -54,9 +59,11 @@
 				</tr>
 				<tr>
 					<td>
-					<v:AreaTag rows="5" cols="30" name="textarea" title="textarea" maxLength="20" minLength="10"></v:AreaTag>
-					&lt;v:AreaTag rows="5" cols="30" name="textarea" title="textarea" maxLength="20" minLength="10"&gt;
-					
+						<v:AreaTag rows="5" cols="30" name="textarea" hintName="textarea"
+							maxLength="20" minLength="10"></v:AreaTag>
+						&lt;v:AreaTag rows="5" cols="30" name="textarea" title="textarea"
+						maxLength="20" minLength="10"&gt;
+
 					</td>
 				</tr>
 			</table>
@@ -68,29 +75,31 @@
 			<table>
 				<tr>
 					<td>
-						金额
-						<v:Money17 name="money17" title="money17" maxlength="19" value="<%=test %>" ></v:Money17>
+						金额&prime;
+						<v:Money17 name="money17" hintName="money17" maxlength="19"
+							value="<%=test%>"></v:Money17>
 						&lt; v : Money17 name="money17" title="money17"&gt;
 					</td>
 				</tr>
 				<tr>
 					<td>
 						金额1
-						<v:Money17 name="money1" title="金额1" minValue="null"></v:Money17>
+						<v:Money17 name="money1" hintName="金额1" minValue="null"></v:Money17>
 						&lt;v:Money17 name="money1" title="金额1" &gt;
 					</td>
 				</tr>
 				<tr>
 					<td>
 						Email
-						<v:Email name="Email" title="Email"></v:Email>
-						<v:Email name="Email" title="Email"></v:Email>
+						<v:Email name="Email" hintName="Email"></v:Email>
+						<v:Email name="Email" hintName="Email"></v:Email>
 					</td>
 				</tr>
-				
+
 				<tr>
 					<td>
-						Name<v:Name name="name" title="Name"></v:Name>
+						Name
+						<v:Name name="name" hintName="Name"></v:Name>
 						&lt;v:Name name="name" title="Name"&gt;
 					</td>
 				</tr>

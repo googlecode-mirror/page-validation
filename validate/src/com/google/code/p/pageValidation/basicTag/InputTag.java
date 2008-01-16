@@ -24,10 +24,10 @@ abstract class InputTag extends ValidateHtmFieldTag {
 	private FormTag parent;
 
 	// html input attributes
-	private String name = null, title = null, value = null, width = null, height = null, htmclass = null,
-					readonly = null, disabled = null, align = null, accept = null, accesskey = null, alt = null,
-					border = null, dir = null, id = null, ismap = null, istyle = null, lang = null, checked = null,
-					onblur = null, onchange = null, onclick = null, ondblclick = null, onfocus = null, onhelp = null,
+	private String name = null, value = null, width = null, height = null, htmclass = null, readonly = null,
+					disabled = null, align = null, accept = null, accesskey = null, alt = null, border = null,
+					dir = null,  ismap = null, istyle = null, lang = null, checked = null, onblur = null,
+					onchange = null, onclick = null, ondblclick = null, onfocus = null, onhelp = null,
 					onkeydown = null, onkeypress = null, onkeyup = null, onmousedown = null, onmousemove = null,
 					onmouseout = null, onmouseover = null, onmouseup = null, onselect = null, src = null, style = null,
 					tabindex = null, usemap = null, type = null;
@@ -57,7 +57,7 @@ abstract class InputTag extends ValidateHtmFieldTag {
 		try {
 			StringBuffer tmpBuf = new StringBuffer("<input type=\"" + getType() + "\" ");
 			tmpBuf.append(name != null ? " name=\"" + name + "\"" : "");
-			tmpBuf.append(title != null ? " title=\"" + title + "\"" : "");
+			tmpBuf.append(getTitle() != null ? " title=\"" + getTitle() + "\"" : "");
 			tmpBuf.append(value != null ? " value=\"" + value + "\"" : "");
 			tmpBuf.append(width != null ? " width=\"" + width + "\"" : "");
 			tmpBuf.append(height != null ? " height=\"" + height + "\"" : "");
@@ -71,7 +71,7 @@ abstract class InputTag extends ValidateHtmFieldTag {
 			tmpBuf.append(alt != null ? " alt=\"" + alt + "\"" : "");
 			tmpBuf.append(border != null ? " border=\"" + border + "\"" : "");
 			tmpBuf.append(dir != null ? " dir=\"" + dir + "\"" : "");
-			tmpBuf.append(id != null ? " id=\"" + id + "\"" : "");
+			tmpBuf.append(getId() != null ? " id=\"" + getId() + "\"" : "");
 			tmpBuf.append(ismap != null ? " ismap=\"" + ismap + "\"" : "");
 			tmpBuf.append(istyle != null ? " istyle=\"" + istyle + "\"" : "");
 			tmpBuf.append(lang != null ? " lang=\"" + lang + "\"" : "");
@@ -187,21 +187,6 @@ abstract class InputTag extends ValidateHtmFieldTag {
 	 */
 	public final void setName(String name) {
 		this.name = name;
-	}
-
-	/**
-	 * @return the title
-	 */
-	public final String getTitle() {
-		return title;
-	}
-
-	/**
-	 * @param title
-	 *            the title to set
-	 */
-	public final void setTitle(String title) {
-		this.title = title;
 	}
 
 	/**
@@ -397,21 +382,6 @@ abstract class InputTag extends ValidateHtmFieldTag {
 	 */
 	public final void setDir(String dir) {
 		this.dir = dir;
-	}
-
-	/**
-	 * @return the id
-	 */
-	public final String getId() {
-		return id;
-	}
-
-	/**
-	 * @param id
-	 *            the id to set
-	 */
-	public final void setId(String id) {
-		this.id = id;
 	}
 
 	/**

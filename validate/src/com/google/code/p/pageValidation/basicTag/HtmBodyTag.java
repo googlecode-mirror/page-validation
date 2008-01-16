@@ -44,7 +44,6 @@ public class HtmBodyTag implements javax.servlet.jsp.tagext.BodyTag {
 
 	/**
 	 * auto create a id for HtmlTag‘s chieldren
-	 * 
 	 * @param prifex
 	 * @return the unique id in a page
 	 * @throws JspException
@@ -116,9 +115,9 @@ public class HtmBodyTag implements javax.servlet.jsp.tagext.BodyTag {
 		try {
 			StringBuffer tmpBuf = new StringBuffer();
 			tmpBuf.append("<script language=\"javascript\" type=\"text/javascript\" src=\"" + getJsPath()
-							+ "commValidation.js\"></script>");
+							+ "commValidation.js\"></script>\n");
 			tmpBuf.append("<script language=\"javascript\" type=\"text/javascript\" src=\"" + getJsPath()
-							+ "Validation.js\"></script>");
+							+ "Validation.js\"></script>\n");
 			tmpBuf.append("<body ");
 			tmpBuf.append(alink != null ? "alink=\"" + alink + "\"" : "");
 			tmpBuf.append(background != null ? "background=\"" + background + "\"" : "");

@@ -83,7 +83,7 @@ public class FloatTextTag extends TextTag {
 	public String getValdationJsString() {
 		StringBuffer tmpBuf = new StringBuffer("addFloatField(");
 		tmpBuf.append("\"" + getId() + "\",");
-		tmpBuf.append("\"" + getTitle() + "\",");
+		tmpBuf.append("\"" + getHintName() + "\",");
 		tmpBuf.append(getMaxlength() + ",");
 		tmpBuf.append(getSize() + ",");
 		tmpBuf.append(isCanEmpty() + ",");

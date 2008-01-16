@@ -41,7 +41,7 @@ public class IntTextTag extends TextTag {
 		//VALIDATION.prototype.addIntField = function(htmFieldID,htmTitle,htmMaxLen,htmFieldSize,canEmpty,maxValStr,minValStr,custCheckFun){
 		StringBuffer stringBuffer = new StringBuffer("addIntField(");
 		stringBuffer.append("\""+ getId()+"\",");
-		stringBuffer.append("\""+ getTitle()+"\",");
+		stringBuffer.append("\""+ getHintName()+"\",");
 		stringBuffer.append(getMaxlength()+",");
 		stringBuffer.append(getSize()+",");
 		stringBuffer.append(isCanEmpty()+",");

@@ -22,7 +22,7 @@ public class AreaTag extends TextareaTag {
 		// function(htmFieldID,htmTitle,htmMaxLen,htmFieldSize,canEmpty,regExp,custCheckFun,minLength){
 		StringBuffer tmpBuf = new StringBuffer("addGeneralField(");
 		tmpBuf.append("\"" + getId() + "\",");
-		tmpBuf.append("\"" + getTitle() + "\",");
+		tmpBuf.append("\"" + getHintName() + "\",");
 		tmpBuf.append(getMaxLength() + ",");
 		tmpBuf.append("null,");// textarea do not have this attribute
 		tmpBuf.append(isCanEmpty() + ",");

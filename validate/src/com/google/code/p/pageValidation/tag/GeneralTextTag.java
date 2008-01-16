@@ -18,15 +18,15 @@ public class GeneralTextTag extends TextTag {
 	 * @see com.google.code.p.pageValidation.ValidateHtmFieldTag#getValdationJsString(java.lang.String)
 	 */
 	public String getValdationJsString() {
-		// function(htmFieldID,htmTitle,htmMaxLen,htmFieldSize,canEmpty,regExp,custCheckFun,minLen){
+		//function(htmFieldID,htmTitle,htmMaxLen,htmFieldSize,canEmpty,regExp,custCheckFun,minLen){
 		StringBuffer tmpBuf = new StringBuffer("addGeneralField(");
 		tmpBuf.append("\"" + getId() + "\",");
-		tmpBuf.append("\"" + getTitle() + "\",");
+		tmpBuf.append("\"" + getHintName() + "\",");
 		tmpBuf.append(getMaxlength() + ",");
 		tmpBuf.append(getSize() + ",");
 		tmpBuf.append(isCanEmpty() + ",");
-		tmpBuf.append(getRegExp() + ",");
-		tmpBuf.append(getCustJsCheckFun() + ",");
+		tmpBuf.append(getRegExp()+",");
+		tmpBuf.append(getCustJsCheckFun()+",");
 		tmpBuf.append(getMinLength());
 		tmpBuf.append(");");
 		return tmpBuf.toString();

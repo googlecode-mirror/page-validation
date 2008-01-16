@@ -20,9 +20,7 @@ import com.google.code.p.pageValidation.beans.TagBean;
 public abstract class TextareaTag extends ValidateHtmFieldTag {
 	private Integer rows = null;
 	private Integer cols = null;
-	private String title = null;
 	private String name = null;
-	private String id = null;
 	private String htmclass = null;
 	private String readonly = null;
 	private String disabled = null;
@@ -96,9 +94,9 @@ public abstract class TextareaTag extends ValidateHtmFieldTag {
 			StringBuffer tmpBuf = new StringBuffer("<textarea ");
 			tmpBuf.append(rows != null ? "rows=\"" + rows + "\"" : "");
 			tmpBuf.append(cols != null ? "cols=\"" + cols + "\"" : "");
-			tmpBuf.append(title != null ? "title=\"" + title + "\"" : "");
+			tmpBuf.append(getTitle() != null ? "title=\"" + getTitle() + "\"" : "");
 			tmpBuf.append(name != null ? "name=\"" + name + "\"" : "");
-			tmpBuf.append(id != null ? "id=\"" + id + "\"" : "");
+			tmpBuf.append(getId() != null ? "id=\"" + getId() + "\"" : "");
 			tmpBuf.append(htmclass != null ? "class=\"" + htmclass + "\"" : "");
 			tmpBuf.append(readonly != null ? "readonly=\"" + readonly + "\"" : "");
 			tmpBuf.append(disabled != null ? "disabled=\"" + disabled + "\"" : "");
@@ -199,21 +197,6 @@ public abstract class TextareaTag extends ValidateHtmFieldTag {
 	}
 
 	/**
-	 * @return the title
-	 */
-	public final String getTitle() {
-		return title;
-	}
-
-	/**
-	 * @param title
-	 *            the title to set
-	 */
-	public final void setTitle(String title) {
-		this.title = title;
-	}
-
-	/**
 	 * @return the name
 	 */
 	public final String getName() {
@@ -226,21 +209,6 @@ public abstract class TextareaTag extends ValidateHtmFieldTag {
 	 */
 	public final void setName(String name) {
 		this.name = name;
-	}
-
-	/**
-	 * @return the id
-	 */
-	public final String getId() {
-		return id;
-	}
-
-	/**
-	 * @param id
-	 *            the id to set
-	 */
-	public final void setId(String id) {
-		this.id = id;
 	}
 
 	/**

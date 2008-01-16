@@ -20,9 +20,9 @@ import com.google.code.p.pageValidation.beans.FormBean;
  * 
  */
 public class HtmlTag implements BodyTag {
-	String dir=null;
-	String lang=null;
-	String version=null;
+	String dir = null;
+	String lang = null;
+	String version = null;
 
 	public HtmlTag() {
 	}

@@ -189,6 +189,11 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
+			<name>canEmpty</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
 			<name>custJsCheckFun</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
@@ -201,7 +206,12 @@
 		</attribute>
 		<attribute>
 			<name>title</name>
-			<required>true</required><!-- must have title for valdation alert -->
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>hintName</name>
+			<required>true</required><!-- must have hintName for valdation alert -->
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
@@ -627,6 +637,11 @@
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
+		<attribute>
+			<name>canEmpty</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
 		<!-- html input defalut -->
 		<attribute><!-- must have  the name for sumbit -->
 			<name>name</name>
@@ -634,8 +649,13 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
+			<name>hintName</name>
+			<required>true</required><!-- must have hintName for valdation alert -->
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
 			<name>title</name>
-			<required>true</required><!-- must have title for valdation alert -->
+			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
@@ -861,6 +881,11 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
+			<name>canEmpty</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
 			<name>custJsCheckFun</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
@@ -873,7 +898,12 @@
 		</attribute>
 		<attribute>
 			<name>title</name>
-			<required>true</required><!-- must have title for valdation alert -->
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>hintName</name>
+			<required>true</required><!-- must have hintName for valdation alert -->
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
@@ -1096,6 +1126,11 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
+			<name>canEmpty</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
 			<name>minLength</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
@@ -1113,7 +1148,12 @@
 		</attribute>
 		<attribute>
 			<name>title</name>
-			<required>true</required>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>hintName</name>
+			<required>true</required><!-- must have hintName for valdation alert -->
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
@@ -1330,6 +1370,11 @@
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
+		<attribute>
+			<name>canEmpty</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
 		<!-- html input defalut -->
 		<attribute><!-- must have  the name for sumbit -->
 			<name>name</name>
@@ -1338,7 +1383,12 @@
 		</attribute>
 		<attribute>
 			<name>title</name>
-			<required>true</required><!-- must have title for valdation alert -->
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>hintName</name>
+			<required>true</required><!-- must have hintName for valdation alert -->
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
@@ -1555,6 +1605,16 @@
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
+		<attribute>
+			<name>hintName</name>
+			<required>true</required><!-- must have hintName for valdation alert -->
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>canEmpty</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
 		<!-- html input defalut -->
 		<attribute><!-- must have  the name for sumbit -->
 			<name>name</name>
@@ -1563,7 +1623,7 @@
 		</attribute>
 		<attribute>
 			<name>title</name>
-			<required>true</required><!-- must have title for valdation alert -->
+			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
@@ -1807,6 +1867,11 @@
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
+		<attribute>
+			<name>hintName</name>
+			<required>true</required><!-- must have hintName for valdation alert -->
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
 		<!-- html text area defalut -->
 		<attribute>
 			<name>rows</name>
@@ -1820,7 +1885,7 @@
 		</attribute>
 		<attribute>
 			<name>title</name>
-			<required>true</required>
+			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
